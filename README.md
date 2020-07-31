@@ -12,7 +12,9 @@ The hosts you are targeting should have the following packages:
 
 ## Role Variables
 
-None
+| Variable      | Required | Default   | Description                                                                |
+| ------------- | -------- | --------- | -------------------------------------------------------------------------- |
+| brave_channel | &#9989;  | `release` | The channel to use. Possible options are `release`, `beta`, and `nightly`. |
 
 ## Dependencies
 
@@ -24,6 +26,8 @@ None
 - hosts: servers
   roles:
     - role: jaredhocutt.brave_browser
+      vars:
+        brave_channel: beta
 ```
 
 ## License
