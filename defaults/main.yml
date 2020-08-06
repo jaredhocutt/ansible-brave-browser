@@ -2,3 +2,6 @@
 # defaults file for brave-browser
 
 brave_channel: release
+
+brave_gpg_key_url: https://brave-browser-rpm-{{ brave_channel }}.s3.brave.com/brave-core.asc
+

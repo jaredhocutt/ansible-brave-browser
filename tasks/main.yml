@@ -1,6 +1,11 @@
 ---
 # tasks file for brave-browser
 
+- name: Set GPG key URL for beta/nightly
+  set_fact:
+    brave_gpg_key_url: https://brave-browser-rpm-{{ brave_channel }}.s3.brave.com/brave-core-nightly.asc
+  when: brave_channel != 'release'
+
 - name: Create yum repository
   yum_repository:
     name: brave-browser
@@ -8,7 +13,7 @@
     baseurl: https://brave-browser-rpm-{{ brave_channel }}.s3.brave.com/$basearch
     enabled: yes
     gpgcheck: yes
-    gpgkey: https://brave-browser-rpm-{{ brave_channel }}.s3.brave.com/brave-core.asc
+    gpgkey: "{{ brave_gpg_key_url }}"
     state: present
   become: yes
 
